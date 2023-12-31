@@ -57,38 +57,39 @@ public class Main {
                     }
                     case 2 -> {
                         LOOP2:
-                        while (true){
+                        while (true) {
                             User currentUser = null;
                             System.out.println("""
-                                Choose command
-                                1.Registrasia
-                                2.Login
-                                0.Exit
-                                                              
-                                  """);
+                                    Choose command
+                                    1.Registrasia
+                                    2.Login
+                                    0.Exit
+                                                                  
+                                      """);
                             try {
                                 int action = new Scanner(System.in).nextInt();
                                 switch (action) {
                                     case 1 -> System.out.println(userService.registratsia(new User()));
-                                    case 2-> {
-                                        currentUser  = userService.login(new User());
+                                    case 2 -> {
+                                        currentUser = userService.login(new User());
 
                                         System.out.println("Welcome " + currentUser.getLogin());
                                         LOOP3:
-                                        while (true){
+                                        while (true) {
                                             System.out.println("""
-                                            Choose command: 
-                                            1.Add post
-                                            2.Find post
-                                            3.Find user by email
-                                            0.Exit
-                                            """);
+                                                    Choose command: 
+                                                    1.Add post
+                                                    2.Find post
+                                                    3.Find user by email
+                                                    0.Exit
+                                                    """);
                                             try {
                                                 int command = new Scanner(System.in).nextInt();
-                                                switch (command){
-                                                    case 1->{
+                                                switch (command) {
+                                                    case 1 -> {
                                                         userService.addnewPost(currentUser);
-                                                    }case 2->{
+                                                    }
+                                                    case 2 -> {
                                                         System.out.println("Write post usera");
                                                         try {
                                                             System.out.println(userService.findUserByPost(new Scanner(System.in).nextLine()));
@@ -96,34 +97,40 @@ public class Main {
                                                             System.out.println(e.getMessage());
 
                                                         }
-                                                    }case 3->{
+                                                    }
+                                                    case 3 -> {
                                                         System.out.println("Write email: ");
                                                         try {
                                                             System.out.println(userService.findUserByEmail(new Scanner(System.in).nextLine()));
                                                         } catch (Notfoud e) {
                                                             System.out.println(e.getMessage());
                                                         }
-                                                    }case 0->{break LOOP3;}
+                                                    }
+                                                    case 0 -> {
+                                                        break LOOP3;
+                                                    }
                                                 }
-                                            }catch (InputMismatchException e){
+                                            } catch (InputMismatchException e) {
                                                 System.out.println("Write number");
                                             }
                                         }
 
-                                    }case 0->{
+                                    }
+                                    case 0 -> {
                                         break LOOP2;
                                     }
                                 }
-                            }catch (InputMismatchException exception){
+                            } catch (InputMismatchException exception) {
                                 System.out.println("Write number");
                             }
                         }
 
-                    }case 0->{
+                    }
+                    case 0 -> {
                         break LOOPONE;
                     }
                 }
-            }catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("Write number");
             }
         }
